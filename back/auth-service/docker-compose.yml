@@ -1,0 +1,14 @@
+services:
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - ORACLE_DATABASE=AUTH_DB
+      - APP_USER=my_test_user
+      - APP_USER_PASSWORD=pass123123
+    depends_on:
+      - oracle-auth-db
+    ports:
+      - "8080:8080"
